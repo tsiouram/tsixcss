@@ -19,9 +19,11 @@ class TsixHeaderTwo extends HTMLElement {
 
         this.innerHTML = `
         <header class="header2">
-            <div class="brand">
+            <div>
                 <img src="${logo}" alt="Logo" class="logo2">
-                <h1>${titre}</h1>
+            </div>
+            <div>
+              <h1>${titre}</h1>
             </div>
             <div class="user-actions">
                 <button class="icon-btn">🔔 <span class="badge">3</span></button>
