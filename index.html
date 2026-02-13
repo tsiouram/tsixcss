@@ -4,42 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="tsixcss.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tsiouram/tsixcss@master/tsixcss.css">
+    <script src="https://cdn.jsdelivr.net/gh/tsiouram/tsixcss@master/tsixcss.js"></script>
     <title>Template Tsitsih</title>
 </head>
 
 <body>
 
-    <header class="header1">
-        <img src="./images/Tsixcss.png" alt="Logo" class="logo1">
-        <h1>Bienvenue sur site</h1>
-    </header>
-    <header class="header2">
-        <div>
-            <img src="./images/Tsixcss.png" alt="Logo" class="logo2">
-        </div>
+    <tsix-head-one></tsix-head-one>
 
-        <div>
-            <h1>Bienvenue sur site</h1>
-        </div>
-
-        <div class="user-actions">
-            <button class="icon-btn" title="Notifications">
-                🔔
-                <span class="badge">3</span> </button>
-
-            <a href="#" class="profile-btn">
-                <img src="https://via.placeholder.com/150" alt="Ma photo de profil">
-            </a>
-        </div>
-    </header>
-    <nav class="navbar">
-        <a href="#">Accueil</a>
-        <a href="#">Services</a>
-        <a href="#">Projets</a>
-        <a href="#">Blog</a>
-        <a href="#">Contact</a>
-    </nav>
+    <tsix-navbar menus="Accueil, Boutique, À propos, Contact" links="index.html, shop.html, about.html, contact.html">
+    </tsix-navbar>
 
     <div class="content">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem laudantium dicta saepe impedit dolor eligendi
