@@ -15,14 +15,14 @@ customElements.define('tsix-head-one', TsixHeaderOne)
 class TsixHeaderTwo extends HTMLElement {
     connectedCallback() {
         const titre = this.getAttribute('titre') || "Mon Site";
-        const logo = this.getAttribute('logo') || "./images/default-logo.png";
+        const logo = this.getAttribute('logo') || "./images/tsixcss.png";
 
         this.innerHTML = `
         <header class="header2">
-            <div>
+            <div class="logoheader2">
                 <img src="${logo}" alt="Logo" class="logo2">
             </div>
-            <div>
+            <div class="titreheader2">
               <h1>${titre}</h1>
             </div>
             <div class="user-actions">
@@ -38,6 +38,9 @@ class TsixNavbar extends HTMLElement {
   connectedCallback() {
     const menus = (this.getAttribute('menus') || "Accueil,Services,Projets,Blog,Contact").split(',');
     const links = (this.getAttribute('links') || "#,#,#,#,#").split(',');
+    const titre = this.getAttribute('titre') || "Mon Site";
+
+
 
     let navContent = '';
     menus.forEach((menu, index) => {
@@ -45,7 +48,27 @@ class TsixNavbar extends HTMLElement {
       navContent += `<a href="${href}">${menu.trim()}</a>`;
     });
 
-    this.innerHTML = `<nav class="navbar">${navContent}</nav>`;
+    this.innerHTML = `
+      <nav class="navbar">
+        <div class="nav-container-mobile">
+        <div class="titreheader2mob">
+              <h1>${titre}</h1>
+            </div>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+        
+        <div class="nav-links" id="navLinks">
+          ${navContent}
+        </div>
+      </nav>
+    `;
+
+    // Petit script pour ouvrir/fermer le menu sur mobile
+    const btn = this.querySelector('#menuToggle');
+    const linksBox = this.querySelector('#navLinks');
+    btn.addEventListener('click', () => {
+      linksBox.classList.toggle('active');
+    });
   }
 }
 customElements.define('tsix-navbar', TsixNavbar);
