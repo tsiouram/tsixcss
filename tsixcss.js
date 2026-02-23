@@ -72,3 +72,53 @@ class TsixNavbar extends HTMLElement {
   }
 }
 customElements.define('tsix-navbar', TsixNavbar);
+
+
+class TsixFormOne extends HTMLElement {
+    connectedCallback() {
+        const titre = this.getAttribute('titre') || "Formulaire";
+        const bouton = this.getAttribute('bouton') || "Valider";
+        
+        // On récupère la configuration des champs (format JSON)
+        const champsData = this.getAttribute('champs');
+        const champs = champsData ? JSON.parse(champsData) : [];
+
+        let formHTML = '';
+
+        champs.forEach(champ => {
+            formHTML += `<div class="input-group">`;
+            formHTML += `<label class="label1">${champ.label}</label>`;
+
+            if (champ.type === 'select') {
+                formHTML += `<select class="select1" id="${champ.id}">`;
+                champ.options.forEach(opt => {
+                    formHTML += `<option value="${opt.value}">${opt.text}</option>`;
+                });
+                formHTML += `</select>`;
+            } 
+            else if (champ.type === 'checkbox') {
+                formHTML += `
+                    <div class="checkbox-wrapper">
+                        <input type="checkbox" id="${champ.id}">
+                        <span>${champ.text || ''}</span>
+                    </div>`;
+            }
+            else {
+                formHTML += `<input class="input1" type="${champ.type}" id="${champ.id}" placeholder="${champ.placeholder || ''}" ${champ.required ? 'required' : ''}>`;
+            }
+            formHTML += `</div>`;
+        });
+
+        this.innerHTML = `
+        <div class="center_formulaire1">
+            <section class="glass-card1">
+                <h2>${titre}</h2>
+                <form id="formOne">
+                    ${formHTML}
+                    <button type="submit" class="btn-primary1">${bouton}</button>
+                </form>
+            </section>
+        </div>`;
+    }
+}
+customElements.define('tsix-form-one', TsixFormOne);
